@@ -148,7 +148,6 @@ public class MainActivity extends AppCompatActivity {
             case MotionEvent.ACTION_MOVE:
                 mCurPosX = event.getX();
                 mCurPosY = event.getY();
-
                 break;
             case MotionEvent.ACTION_UP:
                 if (mCurPosY - mPosY > 0 && (Math.abs(mCurPosY - mPosY) > 25))
