@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private ListData more;//footer列
 
     private boolean isScroll = true;
+    private boolean isScrolling = false;
     private int j = 1;
     float mPosX,mPosY,mCurPosX,mCurPosY;
 
@@ -104,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
             {
                 super.onScrollStateChanged(recyclerView, newState);
 
-                if (newState == RecyclerView.SCROLL_STATE_IDLE && isScroll)
+                if (newState == RecyclerView.SCROLL_STATE_IDLE && isScroll && isScrolling)
                 {
                     int lastVisibleItem = mLinearLayoutManager.findLastCompletelyVisibleItemPosition();
                     int totalItemCount = mLinearLayoutManager.getItemCount();
@@ -124,11 +125,11 @@ public class MainActivity extends AppCompatActivity {
 
                 if (dy > 0)
                 {
-                    isScroll = true;
+                    isScrolling = true;
                 }
                 else
                 {
-                    isScroll = false;
+                    isScrolling = false;
                 }
             }
         });
@@ -153,12 +154,12 @@ public class MainActivity extends AppCompatActivity {
                 if (mCurPosY - mPosY > 0 && (Math.abs(mCurPosY - mPosY) > 25))
                 {
                     //向下滑動
-                    isScroll = false;
+                    isScrolling = false;
                 }
                 else if (mCurPosY - mPosY < 0 && (Math.abs(mCurPosY - mPosY) > 25))
                 {
                     //向上滑动
-                    isScroll = true;
+                    isScrolling = true;
                 }
                 break;
             default:
