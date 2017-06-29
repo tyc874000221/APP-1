@@ -3,15 +3,25 @@ package com.tcode.demo.bean;
 
 public class ListData {
 
-    private String dataName;
-    private int dataNum;
+    private String dataName = "";
+    private int dataNum = 0;
+    private int isFooter = 0;
 
     public ListData() {
     }
 
-    public ListData(String dataName, int dataNum) {
+    public ListData(String dataName, int dataNum,int isFooter) {
         this.dataName = dataName;
         this.dataNum = dataNum;
+        this.isFooter = isFooter;
+    }
+
+    public int getIsFooter() {
+        return isFooter;
+    }
+
+    public void setIsFooter(int isFooter) {
+        this.isFooter = isFooter;
     }
 
     public int getDataNum() {
@@ -35,6 +45,7 @@ public class ListData {
         return "ListData{" +
                 "dataName='" + dataName + '\'' +
                 ", dataNum=" + dataNum +
+                ", isFooter=" + isFooter +
                 '}';
     }
 }

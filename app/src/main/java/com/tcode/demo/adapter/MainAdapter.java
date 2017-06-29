@@ -26,9 +26,17 @@ public class MainAdapter extends RecyclerView.Adapter<ViewHolder> {
 	@Override
 	public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-		MViewHolder viewHolder = new MViewHolder(LayoutInflater.from(mContext).inflate(R.layout.item_main_rv, parent, false));
-		return  viewHolder;
-
+		if(viewType == 0)
+		{
+			MViewHolder viewHolder = new MViewHolder(LayoutInflater.from(mContext).inflate(R.layout.item_main_rv, parent, false));
+			return  viewHolder;
+		}
+		else if(viewType == 1)
+		{
+			FootViewHolder viewHolder = new FootViewHolder(LayoutInflater.from(mContext).inflate(R.layout.item_foot, parent, false));
+			return  viewHolder;
+		}
+		return null;
 	}
 
 	@Override
@@ -46,6 +54,11 @@ public class MainAdapter extends RecyclerView.Adapter<ViewHolder> {
 		return list.size() == 0 ? 0 : list.size();
 	}
 
+	@Override
+	public int getItemViewType(int position) {
+		return list.get(position).getIsFooter();
+	}
+
 	class MViewHolder extends ViewHolder{
 
 		TextView tv_dataName,tv_dataNum;
@@ -54,6 +67,14 @@ public class MainAdapter extends RecyclerView.Adapter<ViewHolder> {
 			super(itemView);
 			tv_dataName = (TextView)itemView.findViewById(R.id.tv_dataName);
 			tv_dataNum = (TextView)itemView.findViewById(R.id.tv_dataNum);
+		}
+	}
+
+
+	class FootViewHolder extends ViewHolder{
+
+		public FootViewHolder(View itemView) {
+			super(itemView);
 		}
 	}
 
